@@ -25,5 +25,11 @@ namespace EncryptFaceDetection
         {
             InitializeComponent();
         }
+
+        private void HamburgerMenuControl_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.HamburgerMenuControl.Content = e.ClickedItem;
+            this.HamburgerMenuControl.IsPaneOpen = false;
+        }
     }
 }
