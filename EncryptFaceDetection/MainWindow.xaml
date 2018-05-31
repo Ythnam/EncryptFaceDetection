@@ -80,6 +80,14 @@
                         </controls:HamburgerMenuGlyphItem.Tag>-->
                     </controls:HamburgerMenuGlyphItem>
 
+                    <controls:HamburgerMenuGlyphItem Glyph="&#xe109;"
+                                                     Label="Test">
+                        <!--<controls:HamburgerMenuGlyphItem.Tag>
+                            <views:HomeView />
+                        </controls:HamburgerMenuGlyphItem.Tag>-->
+                    </controls:HamburgerMenuGlyphItem>
+
+
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="Private">
                         <!--<controls:HamburgerMenuGlyphItem.Tag>
