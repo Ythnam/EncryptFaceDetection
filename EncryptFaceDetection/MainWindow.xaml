@@ -9,12 +9,21 @@
         Height="450" Width="800"
         
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Vm="clr-namespace:EncryptFaceDetection.ViewModel"
+        xmlns:Views="clr-namespace:EncryptFaceDetection.View"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <!--Thanks https://github.com/punker76/code-samples/tree/master/MahAppsMetroHamburgerMenu/HamburgerMenuApp-->
-    
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type Vm:VideoViewModel}">
+            <Views:VideoView/>
+        </DataTemplate>
+    </Window.Resources>
+
+
     <Grid>
         <Grid.Resources>
             <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
@@ -75,18 +84,10 @@
                 <controls:HamburgerMenuItemCollection>
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="Home">
-                        <!--<controls:HamburgerMenuGlyphItem.Tag>
-                            <views:HomeView />
-                        </controls:HamburgerMenuGlyphItem.Tag>-->
+                        <controls:HamburgerMenuGlyphItem.Tag>
+                            <Views:VideoView/>
+                        </controls:HamburgerMenuGlyphItem.Tag>
                     </controls:HamburgerMenuGlyphItem>
-
-                    <controls:HamburgerMenuGlyphItem Glyph="&#xe109;"
-                                                     Label="Test">
-                        <!--<controls:HamburgerMenuGlyphItem.Tag>
-                            <views:HomeView />
-                        </controls:HamburgerMenuGlyphItem.Tag>-->
-                    </controls:HamburgerMenuGlyphItem>
-
 
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="Private">

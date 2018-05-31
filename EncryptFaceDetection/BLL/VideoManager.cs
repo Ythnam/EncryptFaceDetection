@@ -1,14 +1,18 @@
-﻿using AForge.Video.DirectShow;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using EncryptFaceDetection.Events;
 using EncryptFaceDetection.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EncryptFaceDetection.BLL
 {
-    class CameraManager
+    class VideoManager
     {
 
         #region Internal datas
@@ -26,6 +30,22 @@ namespace EncryptFaceDetection.BLL
         #endregion
 
         #region External Function
+
+        /// <summary>
+        /// This method allows to get all Video Device on the computer
+        /// </summary>
+        /// <returns> a list of all those devices </returns>
+        public ObservableCollection<CameraModel> GetAllVideoDevices()
+        {
+            ObservableCollection<CameraModel> allCamera = new ObservableCollection<CameraModel>();
+
+            foreach (FilterInfo filterInfo in new FilterInfoCollection(FilterCategory.VideoInputDevice))
+            {
+                allCamera.Add(new CameraModel(filterInfo));
+            }
+
+            return allCamera;
+        }
 
         /// <summary>
         /// Allow to Start a camera
@@ -67,10 +87,6 @@ namespace EncryptFaceDetection.BLL
                 camera.VideoSource.DisplayPropertyPage(IntPtr.Zero);
         }
 
-        public void SaveImage(Bitmap bitmap)
-        {
-            BitmapHelper.SaveImage(bitmap);
-        }
         #endregion
 
         #region Event

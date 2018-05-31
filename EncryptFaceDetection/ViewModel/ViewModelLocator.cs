@@ -43,6 +43,7 @@ namespace EncryptFaceDetection.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<VideoViewModel>();
         }
 
         public MainViewModel Main
@@ -52,7 +53,15 @@ namespace EncryptFaceDetection.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public VideoViewModel VideoViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<VideoViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
