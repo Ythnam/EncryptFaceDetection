@@ -44,6 +44,7 @@ namespace EncryptFaceDetection.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<VideoViewModel>();
+            SimpleIoc.Default.Register<FaceDetectionViewModel>();
         }
 
         public MainViewModel Main
@@ -59,6 +60,14 @@ namespace EncryptFaceDetection.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<VideoViewModel>();
+            }
+        }
+
+        public FaceDetectionViewModel FaceDetectionViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<FaceDetectionViewModel>();
             }
         }
 
