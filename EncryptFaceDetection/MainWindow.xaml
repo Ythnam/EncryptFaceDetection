@@ -21,6 +21,9 @@
         <DataTemplate DataType="{x:Type Vm:VideoViewModel}">
             <Views:VideoView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type Vm:FaceDetectionViewModel}">
+            <Views:VideoView/>
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -91,9 +94,9 @@
 
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="Private">
-                        <!--<controls:HamburgerMenuGlyphItem.Tag>
-                            <views:PrivateView />
-                        </controls:HamburgerMenuGlyphItem.Tag>-->
+                        <controls:HamburgerMenuGlyphItem.Tag>
+                            <Views:FaceDetectionView />
+                        </controls:HamburgerMenuGlyphItem.Tag>
                     </controls:HamburgerMenuGlyphItem>
 
                     <controls:HamburgerMenuGlyphItem Glyph=""

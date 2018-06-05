@@ -16,27 +16,27 @@ namespace EncryptFaceDetection.BLL
     class FaceDetectionManager
     {
 
-        public HaarObjectDetector Detector;
+        private readonly HaarObjectDetector detector;
         
 
         public FaceDetectionManager()
         {
             HaarCascade cascade = new FaceHaarCascade();
-            Detector = new HaarObjectDetector(cascade, 30);
+            detector = new HaarObjectDetector(cascade, 30);
         }
 
         public void Configuration()
         {
             //Detector.SearchMode = (ObjectDetectorSearchMode)cbMode.SelectedValue;
             //Detector.ScalingMode = (ObjectDetectorScalingMode)cbScaling.SelectedValue;
-            Detector.ScalingFactor = 1.5f;
-            Detector.UseParallelProcessing = true;
-            Detector.Suppression = 2;
+            detector.ScalingFactor = 1.5f;
+            detector.UseParallelProcessing = true;
+            detector.Suppression = 2;
         }
 
         public Bitmap DetectFace(Bitmap _bitmap)
         {
-            Rectangle[] objects = Detector.ProcessFrame(_bitmap);
+            Rectangle[] objects = detector.ProcessFrame(_bitmap);
 
             if (objects.Length > 0)
             {
