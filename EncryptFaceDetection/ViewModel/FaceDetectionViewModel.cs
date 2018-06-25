@@ -76,7 +76,6 @@ namespace EncryptFaceDetection.ViewModel
         {
             this.videoManager = new VideoManager();
             this.faceDetectionManager = new FaceDetectionManager();
-            this.faceDetectionManager.Configuration();
 
             this.AllVideoDevices = this.videoManager.GetAllVideoDevices(); // put No Camera as default when we start the video
 
@@ -153,6 +152,7 @@ namespace EncryptFaceDetection.ViewModel
             {
                 this.StopCamera();
             }
+            this.faceDetectionManager.Dispose();
         }
 
         #endregion
@@ -176,7 +176,7 @@ namespace EncryptFaceDetection.ViewModel
 
                 using (var bitmap = e.GetBitmap())
                 {
-                    bi = BitmapHelper.Bitmap2BitmapImage(this.faceDetectionManager.DetectFace(bitmap));
+                    bi = BitmapHelper.Bitmap2BitmapImage(this.faceDetectionManager.FaceTracking(bitmap));
                 }
 
                 bi.Freeze(); // avoid cross thread operations and prevents leaks
