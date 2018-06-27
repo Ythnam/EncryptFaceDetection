@@ -74,6 +74,9 @@ namespace EncryptFaceDetection.BLL
             {
                 this.currentCamera.VideoSource.SignalToStop();
                 this.currentCamera.VideoSource.NewFrame -= video_NewFrame;
+
+                System.Threading.SpinWait.SpinUntil(() => this.currentCamera.VideoSource.IsRunning == false);
+
                 this.IsCameraActivated = false;
             }
         }

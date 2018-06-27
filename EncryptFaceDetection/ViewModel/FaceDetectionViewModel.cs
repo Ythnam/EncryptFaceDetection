@@ -142,8 +142,10 @@ namespace EncryptFaceDetection.ViewModel
                     this.CurrentCamera = camera;
                 }
             }
-
+            
             this.StartCamera(this.CurrentCamera);
+            
+            this.faceDetectionManager.InitialTrackingConfiguration();
         }
 
         private void OnCloseEvent()
@@ -152,7 +154,6 @@ namespace EncryptFaceDetection.ViewModel
             {
                 this.StopCamera();
             }
-            this.faceDetectionManager.Dispose();
         }
 
         #endregion

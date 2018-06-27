@@ -15,7 +15,7 @@ namespace EncryptFaceDetection.BLL
 
     // http://accord-framework.net/samples.html
 
-    class FaceDetectionManager : IDisposable
+    class FaceDetectionManager
     {
         private HaarObjectDetector detector;
         private Camshift tracker;
@@ -31,41 +31,25 @@ namespace EncryptFaceDetection.BLL
                 25, ObjectDetectorSearchMode.Single, 1.2f,
                 ObjectDetectorScalingMode.GreaterToSmaller);
 
-           this.tracker = new Camshift();
+            this.tracker = new Camshift();
 
+            this.InitialTrackingConfiguration();
+        }
+
+        /// <summary>
+        /// Allows to work with HamburgerMenu because item are not disposed at the close event
+        /// </summary>
+        public void InitialTrackingConfiguration()
+        {
             this.isDetecting = true;
             this.isTracking = false;
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            //GC.SuppressFinalize(this);
-        }
-
-        #region IDisposable
-
-        private bool isDisposed = false;
-        protected virtual void Dispose(bool disposing)
-        {
-            if (isDisposed)
-                return;
-
-            if (disposing)
-            {
-                this.isDetecting = true;
-                this.isTracking = false;
-            }
-
-            isDisposed = true;
-        }
-
-        #endregion
 
         public Bitmap FaceTracking(Bitmap _bitmap)
         {
             if (!isDetecting & !isTracking)
                 return _bitmap;
+
 
             if (this.isDetecting)
             {
