@@ -1,4 +1,7 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
+using System.Windows.Input;
 
 namespace EncryptFaceDetection.ViewModel
 {
@@ -29,6 +32,20 @@ namespace EncryptFaceDetection.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+        }
+
+        private ICommand _onCloseMainWindowEventCommand;
+        public ICommand OnCloseMainWindowEventCommand
+        {
+            get
+            {
+                return _onCloseMainWindowEventCommand ?? (_onCloseMainWindowEventCommand = new RelayCommand(() => this.OnCloseEvent()));
+            }
+        }
+
+        private void OnCloseEvent()
+        {
+            MessengerInstance.Send<string>("Close", "Event");
         }
     }
 }

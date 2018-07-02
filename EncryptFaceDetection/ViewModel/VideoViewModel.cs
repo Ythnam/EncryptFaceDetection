@@ -78,11 +78,19 @@ namespace EncryptFaceDetection.ViewModel
             this.AllVideoDevices = this.videoManager.GetAllVideoDevices(); // put No Camera as default when we start the video
             
             this.IsLoadingCameraStream = false; // is used to control the loading image
+
+            MessengerInstance.Register<string>(this, "Event", (action) => EventSent(action));
         }
 
         #endregion
 
         #region Internal function
+
+        private void EventSent(string action)
+        {
+            if (action.Equals("Close"))
+                this.OnCloseEvent();
+        }
 
         private void StartCamera(CameraModel aCamera)
         {

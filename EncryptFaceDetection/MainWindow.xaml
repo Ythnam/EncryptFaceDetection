@@ -8,6 +8,7 @@
         Title="Face detection"
         Height="450" Width="800"
         
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Vm="clr-namespace:EncryptFaceDetection.ViewModel"
         xmlns:Views="clr-namespace:EncryptFaceDetection.View"
@@ -26,6 +27,11 @@
         </DataTemplate>
     </Window.Resources>
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding OnCloseMainWindowEventCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid>
         <Grid.Resources>
