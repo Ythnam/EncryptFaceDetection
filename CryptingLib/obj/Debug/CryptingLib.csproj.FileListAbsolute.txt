@@ -1,0 +1,6 @@
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\CryptingLib\obj\Debug\CryptingLib.csproj.CoreCompileInputs.cache
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\CryptingLib\bin\Debug\CryptingLib.dll
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\CryptingLib\bin\Debug\CryptingLib.pdb
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\CryptingLib\obj\Debug\CryptingLib.dll
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\CryptingLib\obj\Debug\CryptingLib.pdb
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\CryptingLib\obj\Debug\CryptingLib.csprojResolveAssemblyReference.cache

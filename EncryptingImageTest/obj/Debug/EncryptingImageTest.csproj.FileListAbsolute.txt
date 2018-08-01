@@ -1,0 +1,10 @@
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\obj\Debug\EncryptingImageTest.csproj.CoreCompileInputs.cache
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\bin\Debug\EncryptingImageTest.exe.config
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\bin\Debug\EncryptingImageTest.exe
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\bin\Debug\EncryptingImageTest.pdb
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\bin\Debug\CryptingLib.dll
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\bin\Debug\CryptingLib.pdb
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\obj\Debug\EncryptingImageTest.csprojResolveAssemblyReference.cache
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\obj\Debug\EncryptingImageTest.csproj.CopyComplete
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\obj\Debug\EncryptingImageTest.exe
+C:\Users\phjacob\Documents\Visual Studio 2017\Projects\EncryptFaceDetection\EncryptingImageTest\obj\Debug\EncryptingImageTest.pdb

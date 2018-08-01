@@ -25,6 +25,9 @@
         <DataTemplate DataType="{x:Type Vm:FaceDetectionViewModel}">
             <Views:VideoView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type Vm:EncryptingFaceDetectedViewModel}">
+            <Views:VideoView/>
+        </DataTemplate>
     </Window.Resources>
 
     <i:Interaction.Triggers>
@@ -107,9 +110,9 @@
 
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="Settings">
-                        <!--<controls:HamburgerMenuGlyphItem.Tag>
-                            <views:SettingsView />
-                        </controls:HamburgerMenuGlyphItem.Tag>-->
+                        <controls:HamburgerMenuGlyphItem.Tag>
+                            <Views:EncryptingFaceDetectedView />
+                        </controls:HamburgerMenuGlyphItem.Tag>
                     </controls:HamburgerMenuGlyphItem>
                 </controls:HamburgerMenuItemCollection>
             </controls:HamburgerMenu.ItemsSource>

@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptFaceDetection", "EncryptFaceDetection\EncryptFaceDetection.csproj", "{751B94B5-C1B3-4B36-A10D-37AF77C7A30F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptingLib", "CryptingLib\CryptingLib.csproj", "{DD58CCFE-FF51-4302-A3AD-EA791A0EBCE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptingImageTest", "EncryptingImageTest\EncryptingImageTest.csproj", "{8F413DC8-D961-4CCB-B220-10292F10635D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{751B94B5-C1B3-4B36-A10D-37AF77C7A30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{751B94B5-C1B3-4B36-A10D-37AF77C7A30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{751B94B5-C1B3-4B36-A10D-37AF77C7A30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD58CCFE-FF51-4302-A3AD-EA791A0EBCE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD58CCFE-FF51-4302-A3AD-EA791A0EBCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD58CCFE-FF51-4302-A3AD-EA791A0EBCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD58CCFE-FF51-4302-A3AD-EA791A0EBCE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F413DC8-D961-4CCB-B220-10292F10635D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F413DC8-D961-4CCB-B220-10292F10635D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F413DC8-D961-4CCB-B220-10292F10635D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F413DC8-D961-4CCB-B220-10292F10635D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

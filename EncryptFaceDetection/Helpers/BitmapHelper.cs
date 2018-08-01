@@ -46,5 +46,20 @@ namespace EncryptFaceDetection.Helpers
                 return new Bitmap(bitmap);
             }
         }
+
+        // Thx https://stackoverflow.com/questions/7350679/convert-a-bitmap-into-a-byte-array
+        public static byte[] ImageToByte(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+
+        //https://stackoverflow.com/questions/9173904/byte-array-to-image-conversion
+        public static Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
     }
 }

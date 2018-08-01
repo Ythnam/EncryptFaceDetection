@@ -23,7 +23,9 @@ namespace EncryptFaceDetection.BLL
 
         private bool isDetecting;
         private bool isTracking;
-        
+        private bool isCrypting = true;
+
+        public Rectangle FaceTracked;
 
         public FaceDetectionManager()
         {
@@ -34,6 +36,8 @@ namespace EncryptFaceDetection.BLL
             this.tracker = new Camshift();
 
             this.InitialTrackingConfiguration();
+
+            this.FaceTracked = new Rectangle();
         }
 
         /// <summary>
@@ -50,76 +54,90 @@ namespace EncryptFaceDetection.BLL
             if (!isDetecting & !isTracking)
                 return _bitmap;
 
+            //if (FaceTracked.Length > 0)
+            //    this.FaceTracked = null;
 
             if (this.isDetecting)
+                return this.Detecting(_bitmap);
+            else
             {
-                UnmanagedImage im = UnmanagedImage.FromManagedImage(_bitmap);
-
-                float xscale = im.Width / 160f;
-                float yscale = im.Height / 120f;
-
-                ResizeNearestNeighbor resize = new ResizeNearestNeighbor(160, 120);
-                UnmanagedImage downsample = resize.Apply(im);
-
-                Rectangle[] regions = detector.ProcessFrame(downsample);
-
-                if (regions.Length > 0)
-                {
-                    tracker.Reset();
-
-                    // Will track the first face found
-                    Rectangle face = regions[0];
-
-                    // Reduce the face size to avoid tracking background
-                    Rectangle window = new Rectangle(
-                        (int)((regions[0].X + regions[0].Width / 2f) * xscale),
-                        (int)((regions[0].Y + regions[0].Height / 2f) * yscale),
-                        1, 1);
-
-                    window.Inflate(
-                        (int)(0.2f * regions[0].Width * xscale),
-                        (int)(0.4f * regions[0].Height * yscale));
-
-                    // Initialize tracker
-                    tracker.SearchWindow = window;
-                    tracker.ProcessFrame(im);
-
-                    marker = new RectanglesMarker(window);
-                    marker.ApplyInPlace(im);
-
-                    this.isTracking = true;
-
-                    return im.ToManagedImage();
-                }
-                else
-                {
-                    this.isDetecting = false;
-                    return _bitmap;
-                }
+                if (this.isTracking)
+                    return this.Tracking(_bitmap);
+                else if (marker != null) return marker.Apply(_bitmap);
+                return _bitmap;
             }
-            else if (this.isTracking)
-            {
-                UnmanagedImage im = UnmanagedImage.FromManagedImage(_bitmap);
+        }
 
-                // Track the object
+        #region Internal function
+
+        private Bitmap Tracking(Bitmap _bitmap)
+        {
+            UnmanagedImage im = UnmanagedImage.FromManagedImage(_bitmap);
+
+            // Track the object
+            tracker.ProcessFrame(im);
+
+            // Get the object position
+            var obj = tracker.TrackingObject;
+            this.FaceTracked = obj.Rectangle;
+
+            marker = new RectanglesMarker(obj.Rectangle);
+
+            if (marker != null)
+                marker.ApplyInPlace(im);
+
+            return im.ToManagedImage();
+        }
+
+        private Bitmap Detecting(Bitmap _bitmap)
+        {
+            UnmanagedImage im = UnmanagedImage.FromManagedImage(_bitmap);
+
+            float xscale = im.Width / 160f;
+            float yscale = im.Height / 120f;
+
+            ResizeNearestNeighbor resize = new ResizeNearestNeighbor(160, 120);
+            UnmanagedImage downsample = resize.Apply(im);
+
+
+            Rectangle[] regions = detector.ProcessFrame(downsample);
+
+
+            if (regions.Length > 0)
+            {
+                tracker.Reset();
+
+                // Reduce the face size to avoid tracking background
+                Rectangle window = new Rectangle(
+                    (int)((regions[0].X + regions[0].Width / 2f) * xscale),
+                    (int)((regions[0].Y + regions[0].Height / 2f) * yscale),
+                    1, 1);
+
+                window.Inflate(
+                    (int)(0.2f * regions[0].Width * xscale),
+                    (int)(0.4f * regions[0].Height * yscale));
+
+                this.FaceTracked = window;
+
+                // Initialize tracker
+                tracker.SearchWindow = window;
                 tracker.ProcessFrame(im);
 
-                // Get the object position
-                var obj = tracker.TrackingObject;
-                var wnd = tracker.SearchWindow;
+                marker = new RectanglesMarker(window);
+                marker.ApplyInPlace(im);
 
-                marker = new RectanglesMarker(obj.Rectangle);
+                // (Bitmap) Helpers.BitmapHelper.ByteArrayToImage(Helpers.RijndaelHelper.EncryptBytes(Helpers.BitmapHelper.ImageToByte(im.ToManagedImage()), "fzafa", "afzd"))
 
-                if (marker != null)
-                    marker.ApplyInPlace(im);
+                this.isTracking = true;
+
                 return im.ToManagedImage();
             }
             else
             {
-                if (marker != null)
-                    return marker.Apply(_bitmap);
+                this.isDetecting = false;
                 return _bitmap;
             }
         }
+        #endregion
     }
 }
